@@ -1,0 +1,10 @@
+#BlueJ class context
+comment0.params=
+comment0.target=Frame()
+comment1.params=name
+comment1.target=java.awt.TextField\ getTextFiled(java.lang.String)
+comment2.params=label\ makeColor
+comment2.target=javax.swing.JButton\ getButton(java.lang.String,\ boolean)
+comment3.params=
+comment3.target=void\ start()
+numComments=4
