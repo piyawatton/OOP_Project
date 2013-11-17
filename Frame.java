@@ -30,6 +30,7 @@ class Frame extends JFrame {
     
     thePanel = new ArtPanel();
     topPanel = new JPanel();
+    topPanel.setLayout(new GridLayout(3,0));
     button = new JButton("Generate the random art");
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(button);
@@ -53,8 +54,12 @@ class Frame extends JFrame {
     
     
     add(thePanel, BorderLayout.CENTER);
-    textRed = new TextField(CurrentExpression);
+    textRed = new TextField(thePanel.getNameFunction("red"));
+    textGreen = new TextField(thePanel.getNameFunction("green"));
+    textBlue = new TextField(thePanel.getNameFunction("blue"));
     topPanel.add(textRed);
+    topPanel.add(textGreen);
+    topPanel.add(textBlue);
     //topPanel.add(getTextFiled(CurrentExpression));
 
     

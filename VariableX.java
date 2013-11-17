@@ -7,8 +7,12 @@ public class VariableX extends RandomFunction
 
     
     public VariableX(double num){
-           expression = "x";
+        expression = "x";
         this.x = num;
+    }
+    
+    public VariableX(){
+        expression = "x";
     }
 
     public String getFunctionName(){
@@ -16,7 +20,7 @@ public class VariableX extends RandomFunction
         return expression;
     }
     
-    public double compute(){
+    public double compute(double x, double y){
         return this.x;
     }
     

@@ -6,6 +6,8 @@ public class FaunctionBluider
     RandomFunction randomFunctionRed;
     RandomFunction randomFunctionGreen;
     RandomFunction randomFunctionBlue;
+    RandomFunction function;
+    
 
     public FaunctionBluider()
     {
@@ -27,15 +29,18 @@ public class FaunctionBluider
           //if(!hasValue){
             int random = (int)(Math.random()*2);  
             if(random == 0){
-                randomFunctionRed = new VariableY(y);
+                this.function = new VariableY(y);
                 
              
             }else{
-                randomFunctionRed = new VariableX(x);
+                this.function = new VariableX(x);
                 
             }
             //hasValue = true;
+            System.out.println("Access");
+            
           //}
+          randomFunctionRed = this.function;
         }else{
            int random = (int)(Math.random()*2);  
            if(random == 0){
@@ -46,20 +51,21 @@ public class FaunctionBluider
                
             }
             //function = new Cos(function);
-            getFunction(x,  y, deepLevel-1);
+            this.result = getFunction(x,  y, deepLevel-1);
         }
         
         
         
         
         
-        
-        return randomFunctionRed.compute();
+        //return this.result;
+        return randomFunctionRed.compute(x,y);
         
     }
     
     public String functionName(){
-        return randomFunctionRed.getFunctionName();
+        //return randomFunctionRed.getFunctionName();
+        return null;
     }
     
 }

@@ -4,10 +4,10 @@ public class Sin extends Function
 {
    
     RandomFunction function;
-
+    
    
     public Sin(RandomFunction function){
-       
+        
         this.function = function;
     }
 
@@ -16,7 +16,9 @@ public class Sin extends Function
         return "Sin (Pi * "+this.function.getFunctionName()+")";
     }
     
-    public double compute(){
-        return Math.sin(pi * this.function.compute());
+    public double compute(double x, double y){
+        
+        return Math.sin(y*x+y*pi*x* pi * this.function.compute(x,y));
     }
 }
+

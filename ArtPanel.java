@@ -14,6 +14,9 @@ class ArtPanel extends JPanel   {
   RandomFunction randomFunctionRed;
   RandomFunction randomFunctionGreen;
   RandomFunction randomFunctionBlue;
+  
+  RandomFunction firstFunction;
+  
   FaunctionBluider builder;
   
   
@@ -21,9 +24,11 @@ class ArtPanel extends JPanel   {
   private int randomGreen;
   private int randomBlue;
   
-  private String randomRedExp;
-  private String randomGreenExp;
-  private String randomBlueExp;
+  public String randomRedExp;
+  public String randomGreenExp;
+  public String randomBlueExp;
+  
+  
   
   
   
@@ -31,6 +36,8 @@ class ArtPanel extends JPanel   {
     setPreferredSize(new Dimension(SIZE, SIZE));
     
     builder = new FaunctionBluider();
+    
+    
   }
   
   
@@ -40,55 +47,49 @@ class ArtPanel extends JPanel   {
     Graphics2D g2 = (Graphics2D)g;
     
     int random = (int)(Math.random()*2);  
+   
+    
+        randomFunctionRed = createVariable(firstFunction);
+        for(int i = 0; i < (int)(Math.random()*12+4);i++){
+            randomFunctionRed = createFunction(randomFunctionRed);
           
+        }
+ 
+        randomFunctionGreen = createVariable(firstFunction);
+        for(int i = 0; i < (int)(Math.random()*12+4);i++){
+            randomFunctionGreen = createFunction(randomFunctionGreen);
+ 
+        }
+   
+        
+        randomFunctionBlue = createVariable(firstFunction);
+        for(int i = 0; i < (int)(Math.random()*12+4);i++){
+            randomFunctionBlue = createFunction(randomFunctionBlue);
+          
+        }
+        
+      
     
     for(int i=0 ; i<getWidth() ; i++) {
       for(int j=0 ; j<getHeight() ; j++) {
         
         double x = ((((double) i) / getWidth()) * 2.0) -1.0;
         double y = ((((double) j) / getHeight()) * 2.0) -1.0;
-        
-        /*if(!hasValue){
-          if(random == 0){
-             randomFunctionRed = new VariableY(y);
-             
-          }else{
-             randomFunctionRed = new VariableX(x);
-             
-          }
-          hasValue = true;
-        }*/
 
-        /*randomFunctionRed = new VariableX(y);
-        randomFunctionRed = new Sin(randomFunctionRed);
-        randomFunctionRed = new Cos(randomFunctionRed);
-        randomFunctionRed = new Sin(randomFunctionRed);
-        randomFunctionRed = new Cos(randomFunctionRed);*/
-       
-        //createFunction(randomFunctionRed, x,  y, 4);
-
-        
-        randomFunctionGreen = new VariableX(x);
-        randomFunctionGreen = new Cos(randomFunctionGreen);
-        randomFunctionGreen = new Sin(randomFunctionGreen);
-       
-        randomFunctionBlue = new VariableY(y);
-        randomFunctionBlue = new Cos(randomFunctionBlue);
-        randomFunctionBlue = new Sin(randomFunctionBlue);
-        randomFunctionBlue = new Cos(randomFunctionBlue);
-       
     
-        //int red   = exprToInt(randomFunctionRed.compute());
-        int red   = exprToInt(builder.getFunction( x,  y, 4));
-        int green = exprToInt(randomFunctionGreen.compute());
-        int blue  = exprToInt(randomFunctionBlue.compute());
+        int red   = exprToInt(randomFunctionRed.compute(x,y));
+        int green = exprToInt(randomFunctionGreen.compute(x,y));
+        int blue  = exprToInt(randomFunctionBlue.compute(x,y));
         
-
-       System.out.println(builder.functionName());
+        //setFunctionName("red", randomFunctionRed.getFunctionName());
+        //setFunctionName("green", randomFunctionGreen.getFunctionName());
+        //setFunctionName("blue", randomFunctionBlue.getFunctionName());
+        
+        
+       //System.out.println(builder.functionName());
        //System.out.println(x);
-       //System.out.println(randomFunctionRed.compute());
+       //System.out.println(randomFunctionRed.compute(x,y));
         
-     
         
         
         Color color = new Color(red,green,blue);
@@ -96,7 +97,14 @@ class ArtPanel extends JPanel   {
         g2.fillRect(i,j,1,1);
       }
     }
-    
+        
+        System.out.println(randomFunctionRed.getFunctionName());
+        System.out.println(randomFunctionGreen.getFunctionName());
+        System.out.println(randomFunctionBlue.getFunctionName());
+        //setFunctionName("red", randomFunctionRed.getFunctionName());
+        //setFunctionName("green", randomFunctionGreen.getFunctionName());
+        //setFunctionName("blue", randomFunctionBlue.getFunctionName());
+       
   }
   
 
@@ -116,61 +124,52 @@ class ArtPanel extends JPanel   {
     return sum / num.length;
   }
   
+  public RandomFunction createFunction(RandomFunction function){
+   int random = (int)(Math.random()*2);
  
-  public void createFunction(RandomFunction function,double x, double y, int deepLevel){
-       
-      int random = (int)(Math.random()*2);
       if(random == 0){
-         function = new VariableX(x);
-      }else{
-         function = new VariableY(y);   
-      }
-      
-      for(int i = 0; i <= deepLevel; i++){
-          int randomF = (int)(Math.random()*2);
-          if(randomF == 0){
-            function = new Cos(function);
-          }else{
-            function = new Sin(function);   
-          }
-          
-        }
-      
-      
-      /*if(deepLevel == 0){
-          
-          /*int random = (int)(Math.random()*2);  
-          if(random == 0){
-            function = new VariableY(y);
-            //function = new Cos(randomFunctionRed);
-             
-          }else{
-             function = new VariableX(x);
-             //function = new Sin(randomFunctionRed);
-          }
-          function = new VariableX(x);
+          function = new Cos(function);
         }else{
-           int random = (int)(Math.random()*2);  
-           if(random == 0){
-               function = new Sin(randomFunctionRed);
-                 
-           }else{
-               function = new Cos(randomFunctionRed);
-               
-            }
-            function = new Cos(function);
-            createFunction(function, x,  y, deepLevel-1);
-        }*/
-      
-        
-      
+          function = new Sin(function);  
+        }
+
+   return function;
     }
   
+  public RandomFunction createVariable(RandomFunction function){
+   int random = (int)(Math.random()*2);
+ 
+      if(random == 0){
+          function = new VariableX();
+        }else{
+          function = new VariableY();  
+        }
+   return function;
+    }
+    
+  public String getNameFunction(String color){
+      if(color == "red"){
+          return this.randomRedExp;
+      }else if(color == "green"){
+          return this.randomGreenExp;
+      }else{
+          return this.randomBlueExp;
+      }
+      
+      
+  }
   
-  
-  
-  
-  
+  public void setNameFunction(String color, String function){
+      if(color == "red"){
+          this.randomRedExp = function;
+      }else if(color == "green"){
+          this.randomGreenExp = function;
+      }else{
+          this.randomBlueExp = function;
+      }
+      
+      
+  }
   
     
   public void changePic(){

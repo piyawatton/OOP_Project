@@ -22,8 +22,8 @@ public class Average extends Function
         return "Cos (Pi * "+this.function.getFunctionName()+")";
     }
  
-    public double compute(){
+    public double compute(double x, double y){
        // return Math.avg(this.function.compute());
-       return  (this.function.compute()+this.function.compute())/2;
+       return  (this.function.compute(x,y)+this.function.compute(x,y))/2;
     }
 }

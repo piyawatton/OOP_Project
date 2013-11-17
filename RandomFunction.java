@@ -5,7 +5,7 @@ public abstract class RandomFunction
    
     String expression = "No Function";
     double function;
-    
+    double factor;
    
     public String getFunctionName()
     {
@@ -13,5 +13,5 @@ public abstract class RandomFunction
         return expression;
     }
     
-    public abstract double compute();
+    public abstract double compute(double x, double y);
 }
