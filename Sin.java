@@ -17,6 +17,6 @@ public class Sin extends Function
     }
     
     public double compute(){
-        return Math.sin(pi* this.function.compute());
+        return Math.sin(pi * this.function.compute());
     }
 }

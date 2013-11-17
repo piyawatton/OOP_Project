@@ -53,8 +53,6 @@ class Frame extends JFrame {
     
     
     add(thePanel, BorderLayout.CENTER);
-    
-    CurrentExpression = thePanel.getExpressionAsString();
     textRed = new TextField(CurrentExpression);
     topPanel.add(textRed);
     //topPanel.add(getTextFiled(CurrentExpression));
@@ -103,7 +101,7 @@ class Frame extends JFrame {
      // add(thePanel);
       textRed.setText(CurrentExpression);
       thePanel.changePic();
-      thePanel.getExpressionAsString();
+      //thePanel.getExpressionAsString();
       thePanel.repaint();
     }
   }

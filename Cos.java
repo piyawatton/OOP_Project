@@ -20,6 +20,7 @@ public class Cos extends Function
     }
     
     public double compute(){
-        return Math.cos( pi*this.function.compute());
+        
+        return Math.cos(pi* this.function.compute());
     }
 }
