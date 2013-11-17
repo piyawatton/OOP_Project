@@ -9,7 +9,6 @@ public abstract class RandomFunction
    
     public String getFunctionName()
     {
-   
         return expression;
     }
     

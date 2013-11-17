@@ -11,10 +11,12 @@ class Frame extends JFrame {
   private JPanel topPanel;
   private JButton button;
   private String CurrentExpression;
-  private TextField textRed;
-  private TextField textGreen;
-  private TextField textBlue;
-  
+  static TextField textRed;
+  static TextField textGreen;
+  static TextField textBlue;
+  private String redFunction;
+  private String greenFunction;
+  private String blueFunction;
   
   private static final int EQUATION_FONT_SIZE = 16;
   private static final int UPPER_LEFT_CORNER = 100;
@@ -29,8 +31,13 @@ class Frame extends JFrame {
     // create panel with buttons
     
     thePanel = new ArtPanel();
+    
+    
+    
     topPanel = new JPanel();
     topPanel.setLayout(new GridLayout(3,0));
+    
+    
     button = new JButton("Generate the random art");
     JPanel buttonPanel = new JPanel();
     buttonPanel.add(button);
@@ -42,31 +49,27 @@ class Frame extends JFrame {
     
     add(topPanel);
     
-    //theCurrentExpression.setLayout(new BorderLayout());
-    //theCurrentExpression = new JLabel(thePanel.getExpressionAsString());
-    //theCurrentExpression = new JLabel(thePanel.result);
+    
     //theCurrentExpression.setFont(new Font("Serif", Font.PLAIN, EQUATION_FONT_SIZE));
     
     
-    //topPanel.add(theCurrentExpression);
-     //topPanel.add(getTextFiled(thePanel.getExpressionAsString()));
-    // add components to frame
+  
     
     
     add(thePanel, BorderLayout.CENTER);
-    textRed = new TextField(thePanel.getNameFunction("red"));
-    textGreen = new TextField(thePanel.getNameFunction("green"));
-    textBlue = new TextField(thePanel.getNameFunction("blue"));
-    topPanel.add(textRed);
-    topPanel.add(textGreen);
-    topPanel.add(textBlue);
-    //topPanel.add(getTextFiled(CurrentExpression));
+   
 
     
     add(buttonPanel, BorderLayout.SOUTH);
     add(topPanel, BorderLayout.NORTH);
-    setSize(300,400);
     
+    textRed = new TextField("textRed");
+    textGreen = new TextField("textGreen");
+    textBlue = new TextField("textBlue");
+    topPanel.add(textRed);
+    topPanel.add(textGreen);
+    topPanel.add(textBlue);
+    setSize(300,400);
     
   }
   
@@ -91,6 +94,7 @@ class Frame extends JFrame {
   
   
   public void start(){
+    setSize(500,500);  
     setVisible(true);
   }
   
@@ -100,11 +104,7 @@ class Frame extends JFrame {
   
   public class Event implements ActionListener{
     public void actionPerformed(ActionEvent e){
-      //System.out.print("Clicked ");
-     
-      //thePanel = new ArtPanel();
-     // add(thePanel);
-      textRed.setText(CurrentExpression);
+    
       thePanel.changePic();
       //thePanel.getExpressionAsString();
       thePanel.repaint();

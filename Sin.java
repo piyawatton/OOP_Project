@@ -13,12 +13,12 @@ public class Sin extends Function
 
     public String getFunctionName(){
         
-        return "Sin (Pi * "+this.function.getFunctionName()+")";
+        return "Sin (y*Pi*"+this.function.getFunctionName()+")";
     }
     
     public double compute(double x, double y){
-        
-        return Math.sin(y*x+y*pi*x* pi * this.function.compute(x,y));
+        expression = "Sin (y*Pi*"+this.function.getFunctionName()+")";
+        return Math.sin(y* pi * this.function.compute(x,y));
     }
 }
 
