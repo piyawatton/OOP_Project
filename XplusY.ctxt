@@ -1,6 +1,6 @@
 #BlueJ class context
-comment0.params=function
-comment0.target=Sin(RandomFunction)
+comment0.params=
+comment0.target=XplusY()
 comment1.params=
 comment1.target=java.lang.String\ getFunctionName()
 comment2.params=x\ y

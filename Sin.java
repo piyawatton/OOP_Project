@@ -4,19 +4,21 @@ public class Sin extends Function
 {
    
     RandomFunction function;
-
+    
    
     public Sin(RandomFunction function){
-       
+        
         this.function = function;
     }
 
     public String getFunctionName(){
         
-        return "Sin (Pi * "+this.function.getFunctionName()+")";
+        return "Sin (y*Pi*"+this.function.getFunctionName()+")";
     }
     
-    public double compute(){
-        return Math.sin(pi* this.function.compute());
+    public double compute(double x, double y){
+        expression = "Sin (y*Pi*"+this.function.getFunctionName()+")";
+        return Math.sin(y* pi * this.function.compute(x,y));
     }
 }
+

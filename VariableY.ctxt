@@ -1,8 +1,8 @@
 #BlueJ class context
-comment0.params=num
-comment0.target=VariableY(double)
+comment0.params=
+comment0.target=VariableY()
 comment1.params=
 comment1.target=java.lang.String\ getFunctionName()
-comment2.params=
-comment2.target=double\ compute()
+comment2.params=x\ y
+comment2.target=double\ compute(double,\ double)
 numComments=3

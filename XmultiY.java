@@ -1,6 +1,6 @@
 
 
-public class VariableX extends RandomFunction
+public class XmultiY extends RandomFunction
 {
    
    
@@ -8,7 +8,7 @@ public class VariableX extends RandomFunction
     
    
     
-    public VariableX(){
+    public XmultiY(){
         
     }
 
@@ -18,8 +18,8 @@ public class VariableX extends RandomFunction
     }
     
     public double compute(double x, double y){
-        expression = "x";
-        return x;
+        expression = "x*y";
+        return x*y;
     }
     
 }

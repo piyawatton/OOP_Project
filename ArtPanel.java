@@ -7,7 +7,7 @@ class ArtPanel extends JPanel   {
   // Add class constants and instance variables here
   
   public static final int SIZE = 400;
-  public static final int NUM_COLOR_OPTIONS = 2;
+
   private static final double pi = Math.PI;
   public String result = "Test ";
   
@@ -15,17 +15,29 @@ class ArtPanel extends JPanel   {
   RandomFunction randomFunctionGreen;
   RandomFunction randomFunctionBlue;
   
+  RandomFunction firstFunction;
+  
+  static Frame tool;
+  
+  
   private int randomRed;
   private int randomGreen;
   private int randomBlue;
   
-  private String randomRedExp;
-  private String randomGreenExp;
-  private String randomBlueExp;
+  public String randomRedExp;
+  public String randomGreenExp;
+  public String randomBlueExp;
+  
+  
+  
+  
   
   public ArtPanel(){ 
     setPreferredSize(new Dimension(SIZE, SIZE));
-
+    
+    //builder = new FaunctionBluider();
+    
+    
   }
   
   
@@ -34,44 +46,48 @@ class ArtPanel extends JPanel   {
     super.paintComponent(g);
     Graphics2D g2 = (Graphics2D)g;
     
-
+    int random = (int)(Math.random()*2);  
+   
+    
+        randomFunctionRed = createVariable(firstFunction);
+        for(int i = 0; i < (int)(Math.random()*10+4);i++){
+            randomFunctionRed = createFunction(randomFunctionRed);
+          
+        }
+ 
+        randomFunctionGreen = createVariable(firstFunction);
+        for(int i = 0; i < (int)(Math.random()*10+4);i++){
+            randomFunctionGreen = createFunction(randomFunctionGreen);
+ 
+        }
+   
+        
+        randomFunctionBlue = createVariable(firstFunction);
+        for(int i = 0; i < (int)(Math.random()*10+4);i++){
+            randomFunctionBlue = createFunction(randomFunctionBlue);
+          
+        }
+        
+      
     
     for(int i=0 ; i<getWidth() ; i++) {
       for(int j=0 ; j<getHeight() ; j++) {
         
-        double x = ((((double) i) / getWidth()) * 2.0) - 1.0;
-        double y = ((((double) j) / getHeight()) * 2.0) - 1.0;
-        
-     
-        randomFunctionRed = new VariableX(x);
-        randomFunctionRed = new Sin(randomFunctionRed);
-        randomFunctionRed = new Sin(randomFunctionRed);
-        randomFunctionRed = new Cos(randomFunctionRed);
-        randomFunctionRed = new Cos(randomFunctionRed);
-        
-        randomFunctionGreen = new VariableY(y);
-        randomFunctionGreen = new Sin(randomFunctionGreen);
-        randomFunctionGreen = new Average(randomFunctionGreen);
-        randomFunctionGreen = new Cos(randomFunctionGreen);
-        
-        
-        randomFunctionBlue = new VariableY(y);
-        randomFunctionBlue = new Cos(randomFunctionBlue);
-        randomFunctionBlue = new Cos(randomFunctionBlue);
-        randomFunctionBlue = new Cos(randomFunctionBlue);
-        
-        
-        int red   = exprToInt(randomFunctionRed.compute());
-        int green = exprToInt(randomFunctionGreen.compute());
-        int blue  = exprToInt(randomFunctionBlue.compute());
-        
+        double x = ((((double) i) / getWidth()) * 2.0) -1.0;
+        double y = ((((double) j) / getHeight()) * 2.0) -1.0;
 
+    
+        int red   = exprToInt(randomFunctionRed.compute(x,y));
+        int green = exprToInt(randomFunctionGreen.compute(x,y));
+        int blue  = exprToInt(randomFunctionBlue.compute(x,y));
+        
        
         
-        //*****Random Function
-
         
-        //expRed.getResult(x,y) is random function of red.
+       //System.out.println(builder.functionName());
+       //System.out.println(x);
+       //System.out.println(randomFunctionRed.compute(x,y));
+        
         
         
         Color color = new Color(red,green,blue);
@@ -79,17 +95,22 @@ class ArtPanel extends JPanel   {
         g2.fillRect(i,j,1,1);
       }
     }
-    
+        randomRedExp = randomFunctionRed.getFunctionName();
+        randomGreenExp = randomFunctionGreen.getFunctionName();
+        randomBlueExp = randomFunctionBlue.getFunctionName();
+        
+        //System.out.println(randomFunctionRed.getFunctionName());
+        //System.out.println(randomFunctionGreen.getFunctionName());
+       // System.out.println(randomFunctionBlue.getFunctionName());
+       
+       
+        tool.textRed.setText(randomRedExp);
+        tool.textGreen.setText(randomGreenExp);
+        tool.textBlue.setText(randomBlueExp);
+        
   }
   
-  
-  public String getExpressionAsString() {
-    
-  
-    return this.result;
-  }
-  
- 
+
   
 
   public int exprToInt(double num){
@@ -98,15 +119,48 @@ class ArtPanel extends JPanel   {
   
 
   
-  public double avg(double... num) {
-    double sum = 0;
-    for(int i=0 ; i<num.length ; i++) {
-      sum = sum + num[i];
-    }
-    return sum / num.length;
-  }
-  
+  public RandomFunction createFunction(RandomFunction function){
+   int random = (int)(Math.random()*100);
  
+      if(random < 35){
+          function = new Cos(function);
+        }else if(random < 70){
+          function = new Sin(function);  
+        }else if(random < 85){
+          function = new Avg(function);  
+        }else if(random < 90){
+          function = new Tan(function);
+        }else if(random < 92){
+          function = new Rint(function);        
+        }else{
+          function = new Absolute(function);   
+        }
+
+   return function;
+    }
+  
+  public RandomFunction createVariable(RandomFunction function){
+   int random = (int)(Math.random()*100);
+ 
+      if(random < 10){
+          function = new VariableX();
+        }else if(random < 20){
+          function = new VariableY();  
+        }else if(random < 40){
+          function = new XdevideY();    
+        }else if(random < 60){
+          function = new XmultiY();    
+        }else if(random < 80){
+          function = new XplusY();    
+        }else{
+          function = new XminusY();    
+        }
+        
+   return function;
+    }
+    
+  
+  
   
   
     
