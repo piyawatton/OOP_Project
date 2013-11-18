@@ -7,10 +7,13 @@ import java.awt.event.*;
 class Frame extends JFrame {
   
   private ArtPanel thePanel;
-  private JLabel theCurrentExpression;
+  
   private JPanel topPanel;
   private JButton button;
-  private String CurrentExpression;
+  private JButton buttonPrint;
+  private JPanel buttonPanel;
+  private JLabel labelPic;
+ 
   static TextField textRed;
   static TextField textGreen;
   static TextField textBlue;
@@ -25,58 +28,61 @@ class Frame extends JFrame {
   private ImageIcon imageIcon;
   
   public Frame(){
-    setTitle("Assignment 4 - Random Art");
-    setLayout(new BorderLayout());
+    setTitle("OOP-Project Group 19");
     
+    
+    setLayout(new BorderLayout());
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+    
+    
     blueVar = new Color(120,249,255,200);
     blackgroundComp = new Color(0,0,0);
+    
     fontColor = new Font("Test",Font.PLAIN,15);
     
-    // create panel with buttons
     
+    //Create ArtPanel
     thePanel = new ArtPanel();
     
     
     
-    topPanel = new JPanel();
-    topPanel.setLayout(new GridLayout(3,0));
     
+    
+    //********East Panel of frame******************** 
+    buttonPanel = new JPanel();
     imageIcon = new ImageIcon(getClass().getResource("Image/Button.jpg"));
     button = new JButton(imageIcon);
-    //JButton btnTest = new JButton(new ImageIcon("ButtonTest.jpg"));
     button.setBackground(Color.BLACK);
-    JPanel buttonPanel = new JPanel();
-    imagePic = new ImageIcon(getClass().getResource("Image/NamePanel.jpg"));
-    JLabel labelPic = new JLabel(imagePic);
-
     
+    buttonPrint = new JButton(new ImageIcon(getClass().getResource("Image/ButtonPrint.jpg")));
+    buttonPrint.setBackground(Color.BLACK);
+    
+    
+    imagePic = new ImageIcon(getClass().getResource("Image/NamePanel.jpg"));
+    labelPic = new JLabel(imagePic);
+
+
     buttonPanel.setLayout(new BorderLayout());
     buttonPanel.add(button,BorderLayout.NORTH);
     buttonPanel.add(labelPic,BorderLayout.CENTER);
+    buttonPanel.add(buttonPrint, BorderLayout.SOUTH);
     buttonPanel.setBackground(blackgroundComp);
     
     
     Event buttonClick = new Event();
     button.addActionListener(buttonClick);
     
-    // create the label with the current random expression
+    Event buttonP = new Event();
+    buttonPrint.addActionListener(buttonP);
     
-    add(topPanel);
-    
-    
-    //theCurrentExpression.setFont(new Font("Serif", Font.PLAIN, EQUATION_FONT_SIZE));
+    //********End of East Panel ********************** 
     
     
-  
-   
     
-    add(thePanel, BorderLayout.CENTER);
+    //************Top panel, show Expression ************
     
-
-    
-    add(buttonPanel, BorderLayout.EAST);
-    add(topPanel, BorderLayout.NORTH);
+    topPanel = new JPanel();
+    topPanel.setLayout(new GridLayout(3,0));
     
     textRed = new TextField("textRed");
     textRed.setFont(fontColor);
@@ -97,7 +103,16 @@ class Frame extends JFrame {
     topPanel.add(textGreen);
     topPanel.add(textBlue);
     
+
     
+    //****************End of top panel*******************
+    
+    
+    
+    add(thePanel, BorderLayout.CENTER);    
+    add(buttonPanel, BorderLayout.EAST);
+    add(topPanel, BorderLayout.NORTH);
+
   }
   
 
@@ -133,9 +148,16 @@ class Frame extends JFrame {
   public class Event implements ActionListener{
     public void actionPerformed(ActionEvent e){
     
-      thePanel.changePic();
-      //thePanel.getExpressionAsString();
-      thePanel.repaint();
+      
+      if (e.getSource() == button){
+        thePanel.changePic();
+        thePanel.repaint();
+      }else if (e.getSource() == buttonPrint){
+        System.out.println(textRed.getText());
+        System.out.println(textGreen.getText());
+        System.out.println(textBlue.getText());
+        System.out.println("___________________________________________________________________________________");
+      }
     }
   }
   

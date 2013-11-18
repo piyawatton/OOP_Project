@@ -104,9 +104,9 @@ class ArtPanel extends JPanel   {
        // System.out.println(randomFunctionBlue.getFunctionName());
        
        
-        tool.textRed.setText(randomRedExp);
-        tool.textGreen.setText(randomGreenExp);
-        tool.textBlue.setText(randomBlueExp);
+        tool.textRed.setText("Red = "+randomRedExp);
+        tool.textGreen.setText("Green = "+randomGreenExp);
+        tool.textBlue.setText("Blue = "+randomBlueExp);
         
   }
   

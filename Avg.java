@@ -23,7 +23,7 @@ public class Avg extends Function
     
     public double compute(double x, double y){
         expression = "Avg("+this.function.getFunctionName()+"),"+this.function.getFunctionName()+")";
-        return ((this.function.compute(x,y))*(this.function.compute(x,y)))/2;
+        return ((this.function.compute(x,y))+(this.function.compute(x,y)))/2;
         
     }
 }
