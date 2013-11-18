@@ -7,7 +7,7 @@ class ArtPanel extends JPanel   {
   // Add class constants and instance variables here
   
   public static final int SIZE = 400;
-
+  public static final int LEVEL = 6; //start from 4 to 10
   private static final double pi = Math.PI;
   public String result = "Test ";
   
@@ -33,7 +33,7 @@ class ArtPanel extends JPanel   {
   
   
   public ArtPanel(){ 
-    setPreferredSize(new Dimension(SIZE, SIZE));
+   // setPreferredSize(new Dimension(SIZE, SIZE));
     
     //builder = new FaunctionBluider();
     
@@ -50,20 +50,20 @@ class ArtPanel extends JPanel   {
    
     
         randomFunctionRed = createVariable(firstFunction);
-        for(int i = 0; i < (int)(Math.random()*10+4);i++){
+        for(int i = 0; i < (int)(Math.random()*(LEVEL+4)+4);i++){
             randomFunctionRed = createFunction(randomFunctionRed);
           
         }
  
         randomFunctionGreen = createVariable(firstFunction);
-        for(int i = 0; i < (int)(Math.random()*10+4);i++){
+        for(int i = 0; i < (int)(Math.random()*(LEVEL+4)+4);i++){
             randomFunctionGreen = createFunction(randomFunctionGreen);
  
         }
    
         
         randomFunctionBlue = createVariable(firstFunction);
-        for(int i = 0; i < (int)(Math.random()*10+4);i++){
+        for(int i = 0; i < (int)(Math.random()*(LEVEL+4)+4);i++){
             randomFunctionBlue = createFunction(randomFunctionBlue);
           
         }

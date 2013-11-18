@@ -18,15 +18,20 @@ class Frame extends JFrame {
   private String greenFunction;
   private String blueFunction;
   
-  private static final int EQUATION_FONT_SIZE = 16;
-  private static final int UPPER_LEFT_CORNER = 100;
+  private Color blueVar;
+  private Color blackgroundComp;
+  private Font fontColor;
+  private ImageIcon imagePic;
+  private ImageIcon imageIcon;
   
   public Frame(){
     setTitle("Assignment 4 - Random Art");
     setLayout(new BorderLayout());
     
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+    blueVar = new Color(120,249,255,200);
+    blackgroundComp = new Color(0,0,0);
+    fontColor = new Font("Test",Font.PLAIN,15);
     
     // create panel with buttons
     
@@ -37,10 +42,20 @@ class Frame extends JFrame {
     topPanel = new JPanel();
     topPanel.setLayout(new GridLayout(3,0));
     
-    
-    button = new JButton("Generate the random art");
+    imageIcon = new ImageIcon(getClass().getResource("Image/Button.jpg"));
+    button = new JButton(imageIcon);
+    //JButton btnTest = new JButton(new ImageIcon("ButtonTest.jpg"));
+    button.setBackground(Color.BLACK);
     JPanel buttonPanel = new JPanel();
-    buttonPanel.add(button);
+    imagePic = new ImageIcon(getClass().getResource("Image/NamePanel.jpg"));
+    JLabel labelPic = new JLabel(imagePic);
+
+    
+    buttonPanel.setLayout(new BorderLayout());
+    buttonPanel.add(button,BorderLayout.NORTH);
+    buttonPanel.add(labelPic,BorderLayout.CENTER);
+    buttonPanel.setBackground(blackgroundComp);
+    
     
     Event buttonClick = new Event();
     button.addActionListener(buttonClick);
@@ -54,22 +69,34 @@ class Frame extends JFrame {
     
     
   
-    
+   
     
     add(thePanel, BorderLayout.CENTER);
-   
+    
 
     
-    add(buttonPanel, BorderLayout.SOUTH);
+    add(buttonPanel, BorderLayout.EAST);
     add(topPanel, BorderLayout.NORTH);
     
     textRed = new TextField("textRed");
+    textRed.setFont(fontColor);
+    textRed.setBackground(blackgroundComp);
+    textRed.setForeground(blueVar);
+    
     textGreen = new TextField("textGreen");
+    textGreen.setFont(fontColor);
+    textGreen.setBackground(blackgroundComp);
+    textGreen.setForeground(blueVar);
+    
     textBlue = new TextField("textBlue");
+    textBlue.setFont(fontColor);
+    textBlue.setBackground(blackgroundComp);
+    textBlue.setForeground(blueVar);
+    
     topPanel.add(textRed);
     topPanel.add(textGreen);
     topPanel.add(textBlue);
-    setSize(300,400);
+    
     
   }
   
@@ -94,8 +121,9 @@ class Frame extends JFrame {
   
   
   public void start(){
-    setSize(500,500);  
+    setSize(600,650);  
     setVisible(true);
+    setResizable(false);
   }
   
   //******************************************************

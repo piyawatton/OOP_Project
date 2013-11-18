@@ -23,7 +23,7 @@ public class Rint extends Function
     
     public double compute(double x, double y){
         expression = "Rint(x*"+this.function.getFunctionName()+")";
-        return Math.rint(x*this.function.compute(x,y));
+        return Math.rint(x*y*this.function.compute(x,y));
         
     }
 }

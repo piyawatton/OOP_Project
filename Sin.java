@@ -18,7 +18,7 @@ public class Sin extends Function
     
     public double compute(double x, double y){
         expression = "Sin (y*Pi*"+this.function.getFunctionName()+")";
-        return Math.sin(y* pi * this.function.compute(x,y));
+        return Math.sin(pi*y* pi * this.function.compute(x,y));
     }
 }
 
