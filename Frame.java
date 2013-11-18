@@ -157,6 +157,7 @@ class Frame extends JFrame {
         System.out.println(textGreen.getText());
         System.out.println(textBlue.getText());
         System.out.println("___________________________________________________________________________________");
+        System.out.println("");
       }
     }
   }
