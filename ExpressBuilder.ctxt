@@ -1,9 +1,0 @@
-#BlueJ class context
-comment0.params=
-comment0.target=ExpressBuilder()
-comment0.text=\r\n\ Constructor\ for\ objects\ of\ class\ ExpressBuilder\r\n
-comment1.params=newFunction
-comment1.target=void\ insert(ExpressNode)
-comment2.params=
-comment2.target=double\ getResult()
-numComments=3
